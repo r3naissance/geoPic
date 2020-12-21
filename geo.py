@@ -33,6 +33,7 @@ headers['Content-Type'] = 'application/json'
 root_url = 'https://us1.locationiq.com/v1/reverse.php?format=json&normalizecity=1&normalizeaddress=1&key=' + args.key + '&'
 places = []
 tagged = []
+re_ext = ["jpg", "jpeg", "JPG", "JPEG"]
 
 base_kml = [
 '<kml>\n',
@@ -149,13 +150,13 @@ count_pictures = 0
 print('[Info] Counting pictures to be processed...')
 for root, dirs, files in os.walk(args.source):
 	for filename in files:
-		if (filename.endswith('.jpg')) or (filename.endswith('.JPG')) or (filename.endswith('.jpeg')) or (filename.endswith('.JPEG')):
+		if filename.endswith(tuple(re_ext)):
 			total_pictures += 1
 
-print('[Info] {} pictures found'.format(total_pictures))
+print('[Info] {} picture(s) found'.format(total_pictures))
 for root, dirs, files in os.walk(args.source):
 	for filename in files:
-		if (filename.endswith('.jpg')) or (filename.endswith('.JPG')) or (filename.endswith('.jpeg')) or (filename.endswith('.JPEG')):
+		if filename.endswith(tuple(re_ext)):
 			base_name, file_ext = os.path.splitext(filename)
 			path_to_picture = os.path.abspath(root)
 			count_pictures += 1
