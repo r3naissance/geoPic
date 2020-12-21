@@ -149,13 +149,13 @@ count_pictures = 0
 print('[Info] Counting pictures to be processed...')
 for root, dirs, files in os.walk(args.source):
 	for filename in files:
-		if (filename.endswith('.jpg')) or (filename.endswith('.JPG')):
+		if (filename.endswith('.jpg')) or (filename.endswith('.JPG')) or (filename.endswith('.jpeg')) or (filename.endswith('.JPEG')):
 			total_pictures += 1
 
 print('[Info] {} pictures found'.format(total_pictures))
 for root, dirs, files in os.walk(args.source):
 	for filename in files:
-		if (filename.endswith('.jpg')) or (filename.endswith('.JPG')):
+		if (filename.endswith('.jpg')) or (filename.endswith('.JPG')) or (filename.endswith('.jpeg')) or (filename.endswith('.JPEG')):
 			base_name, file_ext = os.path.splitext(filename)
 			path_to_picture = os.path.abspath(root)
 			count_pictures += 1
